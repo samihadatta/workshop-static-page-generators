@@ -51,7 +51,7 @@ Why does this work, although it is not standard HTML5? If you enter the ```_site
 ```
 <link rel="stylesheet" href="/css/custom/style.css">
 ```
-Create a new directory titled `css` and inside create another folder called `custom`. (More on why we're doing this in the Botostrap section!) In `custom`, open terminal and do ```touch style.css``` to create an empty stylesheet. Open it up and add the following style to it:
+Create a new directory titled `css` and inside create another folder called `custom`. (More on why we're doing this in the Bootstrap section!) In `custom`, open terminal and do ```touch style.css``` to create an empty stylesheet. Open it up and add the following style to it:
 ```
 h1 {
   color: purple;
