@@ -217,7 +217,7 @@ Now you have a cool looking Jekyll-generated page with Bootstrap CSS styling! He
 
 *2 questions for the workshop participants to answer (very short answer) when they submit the workshop. These should try to get at something core to the workshop, the what and the why.*
 
-* [ ] How can `default.html` for our Jekyll site allow us to reduce code redundancy?
+* [ ] How can `default.html` allow us to reduce code redundancy when building a website with Jekyll?
 * [ ] Why might a dev use Bootstrap to organize the layout of a site rather than creating base CSS elements (i.e. containers, rows) themselves?
 
 ## Resources
