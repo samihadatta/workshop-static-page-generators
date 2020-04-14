@@ -23,7 +23,7 @@ Assuming you did the setup correctly, you should have Ruby > 2.4.0 installed. Wh
 4. Run ```bundle``` which will install Jekyll in your project (installing the gem just made it available to your computer).
 5. Do ```touch index.html && code index.html```. This will create an HTML file in your project root directory, and open it in VSCode.
 6. In the file, paste the following:
-```
+```html
 <!doctype html>
 <html>
   <head>
@@ -49,10 +49,10 @@ Why does this work, although it is not standard HTML5? If you enter the ```_site
 
 10.  Now let's add some CSS. Add the following line of code to the bottom of the ```head``` section in ```index.html```:
 ```html
-<link rel="stylesheet" href="./css/custom/style.css">
+<link rel="stylesheet" href="style.css">
 ```
-Create a new directory titled `css` and inside create another folder called `custom`. (More on why we're doing this in the Bootstrap section!) In `custom`, open terminal and do ```touch style.css``` to create an empty stylesheet. Open it up and add the following style to it:
-```
+In your root directory, do ```touch style.css``` to create an empty stylesheet. Open it up and add the following style to it:
+```css
 h1 {
   color: purple;
 }
@@ -75,7 +75,7 @@ Paste the following content in there:
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="../css/custom/style.css">
+    <link rel="stylesheet" href="style.css">
     <title>{{ page.title }}</title>
   </head>
   <body>
@@ -184,10 +184,10 @@ deserunt mollit anim id est laborum.
 Now save these files, and they will build automatically! 
 If you go to ```localhost:4000/blog1.html``` and ```localhost:4000/blog2.html```, you'll see your blog posts!
 
+13. Next, we will work on some basic navigation. Suppose you wanted a ```nav``` that each of your pages share. In normal HTML, you would have to write it into each page individually. Jekyll makes this process modular, allowing you to import (or rather, include) HTML from a centralized source into each of your pages.  
+14. In your root directory, do ```mkdir _includes && cd _includes && touch navigation.html```. This creates the directory for HTML that will be used in multiple files, as well as the file that we will be using to store our navigation code.  
+15. Paste the following into navigation.html:
 
-1.  Next, we will work on some basic navigation. Suppose you wanted a ```nav``` that each of your pages share. In normal HTML, you would have to write it into each page individually. Jekyll makes this process modular, allowing you to import (or rather, include) HTML from a centralized source into each of your pages.  
-2.  In your root directory, do ```mkdir _includes && cd _includes && touch navigation.html```. This creates the directory for HTML that will be used in multiple files, as well as the file that we will be using to store our navigation code.  
-3.  Paste the following into navigation.html:
 ```html
 <nav>
   <a href="./">Home</a>
@@ -215,43 +215,27 @@ Now on to Part 2!
 Congrats, you created your first website with Jekyll! 🥳🎉
 Now let's give your site some pizzazz! 🎨🖌️
 
-1. Let's start by downloading the Bootstrap source files. Head over to the [Bootstrap site](https://getbootstrap.com/docs/4.0/getting-started/download/) and click `Download source`. Once downloaded, unzip the file.
-2. In your project `css` directory, create a new folder titled `bootstrap`.
-3. Copy and paste the `scss` folder in the Bootstrap source files into the `bootstrap` folder in your root directory.
-4. We created the `css` folder earlier so that we have an easy way to organize all of our project CSS files (both our custom CSS and Bootstrap). In the `css` directory, create a new file titled `main.scss` and add the following:
+1. Since we already have a `default.html` file that includes the `head` we want for each page, we can easily add Bootstrap's stylesheet to all our pages. Just add the following to the `head` of `default.html`:
 
-```
----
----
-
-@import 'bootstrap/scss/bootstrap';
+```html
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 ```
 
-The empty front matter of the file indicates that we want to use the Sass precompiler to build CSS files from the `scss` files in the `bootstrap` directory. All you need to know about Sass files for this tutorial is that they allow developers to write code in one language and then compile that code into CSS. The `main.scss` file includes the relative imports of all the scss files we want Jekyll to compile.
+2. In order to use Bootstrap's JavaScript features (which allow us to use elements like sliders and expanding menus), be sure to also add the following to the bottom of the `body` in `default.html`:
 
-5. Now we need to tell Jekyll where to find the `main.scss` file. In the project root directory, create a file called `_config.yml` and add the following:
-
-```
-sass:
-  sass_dir: css
-```
-
-This point Jekyll to the `css` directory to find the `main.scss` file.
-
-6. Now we want to be able to load the `main.css` file generated after compiling the Bootstrap `scss` files into our HTML pages. 
-In the `head` of `default.html`, add the following:
-
-```
-<link rel="stylesheet" href="../css/main.css">
+```html
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 ```
 
-7. To make sure we properly rebuild and redisplay the updated layout with Bootstrap, go back to your terminal and kill the current `jekyll serve` process (you can just press `Ctrl` + `C` on your keyboard). Now, re-run `jekyll build` and `jekyll serve`, and return to `localhost:4000` in your browser. If you did everything correctly, your webpage should now look a bit fancier!
+3. To make sure we properly rebuild and redisplay the updated layout with Bootstrap, go back to your terminal and kill the current `jekyll serve` process (you can just press `Ctrl` + `C` on your keyboard). Now, re-run `jekyll build` and `jekyll serve`, and return to `localhost:4000` in your browser. If you did everything correctly, your webpage should now look a bit fancier!
 
 ![jekyll_bootstrap](img/website_jekyll_bootstrap.png)
 
-8. Now that we have things set up, let's play around with the Bootstrap framework a bit! To start, let's create a new webpage by creating file `testbench.html` in the project root directory. (You should add this page to `navigation.html` as well, but we trust you know how to do that!) And don't forget, we don't need to add any CSS files to the head of this page! (Remember why?)
+4. Now that we have things set up, let's play around with the Bootstrap framework a bit! To start, let's create a new webpage by creating file `testbench.html` in the project root directory. (You should add this page to `navigation.html` as well, but we trust you know how to do that!) And don't forget, we don't need to add any CSS files to the head of this page! (Remember why?)
 
-9. Bootstrap is perhaps infamous for its incredibly easy-to-use grid layout system. Let's give it a try! In your `testbench.html` file, add the following in the `body`:
+5. Bootstrap is perhaps infamous for its incredibly easy-to-use grid layout system. Let's give it a try! In your `testbench.html` file, add the following in the `body`:
 
 ```html
 <div class="container">
@@ -270,9 +254,9 @@ To start using the Bootstrap grid system, you must add a `div` with class `conta
 
 You can read more about the basics of Bootstrap's grid system [here](https://getbootstrap.com/docs/4.1/layout/grid/).
 
-10. We also might want to pad our container a bit. To do so, we can go to our `style.css` file in our `css/custom` folder and add the following:
+6. We also might want to pad our container a bit. To do so, we can go to our `style.css` file and add the following:
 
-```
+```css
 .container {
     padding: 10px;
 }
@@ -283,19 +267,44 @@ If you do this, you may have to change the order of linked stylesheets in `defau
 ```html
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/custom/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
     <title>{{ page.title }}</title>
 </head>
 ```
 
-11. Finally, let's explore another much-loved feature of Bootstrap: buttons. Bootstrap includes a wide range of button types with baked-in styles. You can check out the basic ones (and there are a lot!) [here](https://getbootstrap.com/docs/4.0/components/buttons/).
+7. Let's explore another much-loved feature of Bootstrap: buttons. Bootstrap includes a wide range of button types with baked-in styles. You can check out the basic ones (and there are a lot!) [here](https://getbootstrap.com/docs/4.0/components/buttons/).
 
 Add a button to your page using one of the pre-defined styles on Bootstrap's website. (You can even get a hyperlink that looks like a button!) If you want to center it on the page, just wrap it in Bootstrap's helpful `<div class="text-center">`.
 
-Now you have a cool looking Jekyll-generated page with Bootstrap CSS styling! Here's the `testbench.html` page we made:
+8. Remember the CSS checkbox hack we used in Lab 1 to create a hamburger menu, and how difficult that was to get working properly? Bootstrap makes adding a hamburger menu for mobile a breeze!
 
-![jekyll_bootstrap_plus](img/website_jekyll_bootstrap_plus.png)
+Head over to the navbar resource page on Bootstrap's website [here](https://getbootstrap.com/docs/4.1/components/navbar/). Select a style you like -- Bootstrap navbars are responsive by default. There's even an option to convert existing `a` elements to navbar items without needing a list!
+
+After choosing a style you like, go back to your `navigation.html` and edit your `nav` according to the style you selected. We get something like this with our example:
+
+```html
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" href="/">Home</a>
+        <a class="nav-item nav-link" href="/about.html">About</a>
+        <a class="nav-item nav-link" href="/testbench.html">Testbench</a>
+      </div>
+    </div>
+  </nav>
+```
+
+Now you have a cool looking Jekyll-generated page with great Bootstrap CSS styling (that's also responsive on mobile)! Here's the `testbench.html` page we made on desktop:
+
+![jekyll_bootstrap_plus_desktop](img/website_jekyll_bootstrap_plus_desktop.png)
+
+And on mobile:
+
+![jekyll_bootstrap_plus_mobile](img/website_jekyll_bootstrap_plus_mobile.png)
 
 Deployment:  
 In your ```_config.yml``` file, add this line to the top: ```destination: ./docs```. This will create a directory that GitHub Pages recognizes. Go into your repository settings, and use GitHub Pages to deploy your site from ```master branch / docs folder```.
@@ -308,8 +317,6 @@ In your ```_config.yml``` file, add this line to the top: ```destination: ./docs
 * [ ] styled webpage with Bootstrap containers, buttons (+more!)
 
 ## Reflection
-
-*2 questions for the workshop participants to answer (very short answer) when they submit the workshop. These should try to get at something core to the workshop, the what and the why.*
 
 * [ ] How can `default.html` allow us to reduce code redundancy when building a website with Jekyll?
 * [ ] Why might a dev use Bootstrap to organize the layout of a site rather than creating base CSS elements (i.e. containers, rows) themselves?
