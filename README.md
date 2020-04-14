@@ -49,7 +49,7 @@ Why does this work, although it is not standard HTML5? If you enter the ```_site
 
 10.  Now let's add some CSS. Add the following line of code to the bottom of the ```head``` section in ```index.html```:
 ```html
-<link rel="stylesheet" href="/css/custom/style.css">
+<link rel="stylesheet" href="./css/custom/style.css">
 ```
 Create a new directory titled `css` and inside create another folder called `custom`. (More on why we're doing this in the Bootstrap section!) In `custom`, open terminal and do ```touch style.css``` to create an empty stylesheet. Open it up and add the following style to it:
 ```
@@ -190,8 +190,8 @@ If you go to ```localhost:4000/blog1.html``` and ```localhost:4000/blog2.html```
 3.  Paste the following into navigation.html:
 ```html
 <nav>
-  <a href="/">Home</a>
-  <a href="/about.html">About</a>
+  <a href="./">Home</a>
+  <a href="./about.html">About</a>
 </nav>
 ```  
 You might wonder why we don't need to include the ```html``` tag anywhere in this file. That is because we are only storing a single component (the ```nav```) in this file, and it will inevitably be used in a file that does have ```html``` tags.  
@@ -253,7 +253,7 @@ In the `head` of `default.html`, add the following:
 
 9. Bootstrap is perhaps infamous for its incredibly easy-to-use grid layout system. Let's give it a try! In your `testbench.html` file, add the following in the `body`:
 
-```
+```html
 <div class="container">
   <div class="row">
     <div class="col">
@@ -280,7 +280,7 @@ You can read more about the basics of Bootstrap's grid system [here](https://get
 
 If you do this, you may have to change the order of linked stylesheets in `default.html` so we can override Bootstrap's default `container` properties. The later a stylesheet is imported (i.e. further toward the bottom of `head`), the more stylesheets it can override. So, you might want to change your `head` ordering in `default.html` to look like this:
 
-```
+```html
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../css/main.css">
@@ -296,6 +296,9 @@ Add a button to your page using one of the pre-defined styles on Bootstrap's web
 Now you have a cool looking Jekyll-generated page with Bootstrap CSS styling! Here's the `testbench.html` page we made:
 
 ![jekyll_bootstrap_plus](img/website_jekyll_bootstrap_plus.png)
+
+Deployment:  
+In your ```_config.yml``` file, add this line to the top: ```destination: ./docs```. This will create a directory that GitHub Pages recognizes. Go into your repository settings, and use GitHub Pages to deploy your site from ```master branch / docs folder```.
 
 ## Summary / What you Learned
 
