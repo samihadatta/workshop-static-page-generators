@@ -48,7 +48,7 @@ Let's test out a filter. Change the contents of the ```h1``` to ```{{ page.headi
 Why does this work, although it is not standard HTML5? If you enter the ```_site``` directory, it may provide some insight. The deployed site is from ```_site/index.html```, NOT the file you just modified. By running ```jekyll serve``` before, you told Jekyll to — on any change to ```index.html``` — rebuild the page in ```_site/index.html```, then redeploy it to port ```4000```. There is no "Jekyll" syntax in ```_site/index.html```, because Jekyll processes ```index.html``` into HTML5 that the browser can read. The way that Jekyll knows that you want to use its syntax is the inclusion of the "triple dash" section at the top of you ```index.html```. Pretty cool!  
 
 10.  Now let's add some CSS. Add the following line of code to the bottom of the ```head``` section in ```index.html```:
-```
+```html
 <link rel="stylesheet" href="/css/custom/style.css">
 ```
 Create a new directory titled `css` and inside create another folder called `custom`. (More on why we're doing this in the Bootstrap section!) In `custom`, open terminal and do ```touch style.css``` to create an empty stylesheet. Open it up and add the following style to it:
@@ -92,19 +92,110 @@ title: About
 ```  
 Here, you are passing ```default``` as the layout file you want to use to create the html file for the about page, and ```About``` as the title to be used in ```page.title``` on that page.  
 
-12. Now go to ```http://localhost:4000/about.html``` in your browser. You should see your newly created about page!  
+12. Now go to ```http://localhost:4000/about.html``` in your browser. You should see your newly created about page!    
+This feature is frequently used to generate blog posts, which we wil now do. In terminal, go into your ```_layouts``` directory and do ```touch blog.html```. This will contain the layout for our blog posts.  
+In that file, paste the following:
+```html
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../css/custom/blog.css">
+    <title>{{ page.title }}</title>
+  </head>
+  <body>
+    {{ content }}
+  </body>
+</html>
+```
+In the ```css/custom``` directory, do ```touch blog.css```, which will control styles in our blog files.  
+Add the following to that file:
+```css
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
 
-13. Next, we will work on some basic navigation. Suppose you wanted a ```nav``` that each of your pages share. In normal HTML, you would have to write it into each page individually. Jekyll makes this process modular, allowing you to import (or rather, include) HTML from a centralized source into each of your pages.  
-14. In your root directory, do ```mkdir _includes && cd _includes && touch navigation.html```. This creates the directory for HTML that will be used in multiple files, as well as the file that we will be using to store our navigation code.  
-15. Paste the following into navigation.html:
+h1 {
+    width: 80%;
+    font-size: 4em;
+}
+
+p {
+    width: 80%;
+    font-size: 2em;
+}
+```  
+This will establish a font, font sizes, and some spacing.  
+In your root directory, do ```touch blog1.md blog2.md```. These will represent separate blog entires, and will each build into a page.  
+In ```blog1.md```, paste the following:  
+```md
+---
+layout: blog
+title: Swimming in Antarctica
+---
+# Swimming in Antarctica
+
+Sed ut perspiciatis unde omnis iste natus 
+error sit voluptatem accusantium doloremque 
+laudantium, totam rem aperiam, eaque ipsa 
+quae ab illo inventore veritatis et quasi 
+architecto beatae vitae dicta sunt explicabo. 
+Nemo enim ipsam voluptatem quia voluptas sit 
+aspernatur aut odit aut fugit, sed quia 
+consequuntur magni dolores eos qui ratione 
+voluptatem sequi nesciunt. Neque porro 
+quisquam est, qui dolorem ipsum quia dolor 
+sit amet, consectetur, adipisci velit, sed 
+quia non numquam eius modi tempora incidunt 
+ut labore et dolore magnam aliquam quaerat 
+voluptatem. Ut enim ad minima veniam, quis 
+nostrum exercitationem ullam corporis 
+suscipit laboriosam, nisi ut aliquid ex 
+ea commodi consequatur? Quis autem vel eum 
+iure reprehenderit qui in ea voluptate velit 
+esse quam nihil molestiae consequatur, vel 
+illum qui dolorem eum fugiat quo voluptas 
+nulla pariatur.
+```  
+
+In ```blog2.md```, paste the following:  
+```md
+---
+layout: blog
+title: Volcano Jumping
+---
+# How I Survived
+
+Lorem ipsum dolor sit amet, consectetur 
+adipiscing elit, sed do eiusmod tempor 
+incididunt ut labore et dolore magna aliqua. 
+Ut enim ad minim veniam, quis nostrud 
+exercitation ullamco laboris nisi ut 
+aliquip ex ea commodo consequat. Duis aute 
+irure dolor in reprehenderit in voluptate 
+velit esse cillum dolore eu fugiat nulla 
+pariatur. Excepteur sint occaecat cupidatat 
+non proident, sunt in culpa qui officia 
+deserunt mollit anim id est laborum.
+```
+Now save these files, and they will build automatically! 
+If you go to ```localhost:4000/blog1.html``` and ```localhost:4000/blog2.html```, you'll see your blog posts!
+
+
+1.  Next, we will work on some basic navigation. Suppose you wanted a ```nav``` that each of your pages share. In normal HTML, you would have to write it into each page individually. Jekyll makes this process modular, allowing you to import (or rather, include) HTML from a centralized source into each of your pages.  
+2.  In your root directory, do ```mkdir _includes && cd _includes && touch navigation.html```. This creates the directory for HTML that will be used in multiple files, as well as the file that we will be using to store our navigation code.  
+3.  Paste the following into navigation.html:
 ```html
 <nav>
   <a href="/">Home</a>
   <a href="/about.html">About</a>
 </nav>
 ```  
-You might wonder why we dont need to include the ```html``` tag anywhere in this file. That is because we are only storing a single component (the ```nav```) in this file, and it will inevitably be used in a file that does have ```html``` tags.  
-In default.html (in your ```_layouts``` directory) add the following line to the top of the body:  
+You might wonder why we don't need to include the ```html``` tag anywhere in this file. That is because we are only storing a single component (the ```nav```) in this file, and it will inevitably be used in a file that does have ```html``` tags.  
+In ```default.html``` (in your ```_layouts``` directory) add the following line to the top of the body:  
 ```html
 {% include navigation.html %}
 ```
