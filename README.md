@@ -70,7 +70,7 @@ This page tells you a little bit about me.
 
 To turn this Markdown file into HTML, we will need to create a layout for it. Go to the terminal in your root directory and do ```mkdir _layouts && cd _layouts && touch default.html```. These commands will create a directory fo your layouts and an empty layout.  
 Paste the following content in there:  
-```
+```html
 <!doctype html>
 <html>
   <head>
@@ -97,7 +97,7 @@ Here, you are passing ```default``` as the layout file you want to use to create
 13. Next, we will work on some basic navigation. Suppose you wanted a ```nav``` that each of your pages share. In normal HTML, you would have to write it into each page individually. Jekyll makes this process modular, allowing you to import (or rather, include) HTML from a centralized source into each of your pages.  
 14. In your root directory, do ```mkdir _includes && cd _includes && touch navigation.html```. This creates the directory for HTML that will be used in multiple files, as well as the file that we will be using to store our navigation code.  
 15. Paste the following into navigation.html:
-```
+```html
 <nav>
   <a href="/">Home</a>
   <a href="/about.html">About</a>
@@ -105,7 +105,7 @@ Here, you are passing ```default``` as the layout file you want to use to create
 ```  
 You might wonder why we dont need to include the ```html``` tag anywhere in this file. That is because we are only storing a single component (the ```nav```) in this file, and it will inevitably be used in a file that does have ```html``` tags.  
 In default.html (in your ```_layouts``` directory) add the following line to the top of the body:  
-```
+```html
 {% include navigation.html %}
 ```
 Then, add ```layout: default``` into the top section (three-dash area) of your index.html under the root directory.  
