@@ -92,8 +92,9 @@ title: About
 ```  
 Here, you are passing ```default``` as the layout file you want to use to create the html file for the about page, and ```About``` as the title to be used in ```page.title``` on that page.  
 
-12. Now go to ```http://localhost:4000/about.html``` in your browser. You should see your newly created about page!    
-This feature is frequently used to generate blog posts, which we wil now do. In terminal, go into your ```_layouts``` directory and do ```touch blog.html```. This will contain the layout for our blog posts.  
+12. Now go to ```http://localhost:4000/about.html``` in your browser. You should see your newly created about page!   
+
+This Markdown feature is also frequently used to generate blog posts, which we wil now do. In terminal, go into your ```_layouts``` directory and do ```touch blog.html```. This will contain the layout for our blog posts.  
 In that file, paste the following:
 ```html
 <!doctype html>
@@ -108,7 +109,7 @@ In that file, paste the following:
   </body>
 </html>
 ```
-In the ```css/custom``` directory, do ```touch blog.css```, which will control styles in our blog files.  
+In your root project folder, create a `css` directory and in that directory make another directory called `custom`. (This will be a great place to keep css and other stylesheets for specific features on your Jekyll site.) In the ```css/custom``` directory, do ```touch blog.css```, which will control styles in our blog files.  
 Add the following to that file:
 ```css
 body {
