@@ -130,7 +130,7 @@ Now let's give your site some pizzazz! 🎨🖌️
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 ```
 
-6. In order to use Bootstrap's JavaScript features (which allow us to use elements like sliders and expanding menus), be sure to also add the following to the bottom of the `body` in `default.html`:
+2. In order to use Bootstrap's JavaScript features (which allow us to use elements like sliders and expanding menus), be sure to also add the following to the bottom of the `body` in `default.html`:
 
 ```html
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -138,13 +138,13 @@ Now let's give your site some pizzazz! 🎨🖌️
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 ```
 
-7. To make sure we properly rebuild and redisplay the updated layout with Bootstrap, go back to your terminal and kill the current `jekyll serve` process (you can just press `Ctrl` + `C` on your keyboard). Now, re-run `jekyll build` and `jekyll serve`, and return to `localhost:4000` in your browser. If you did everything correctly, your webpage should now look a bit fancier!
+3. To make sure we properly rebuild and redisplay the updated layout with Bootstrap, go back to your terminal and kill the current `jekyll serve` process (you can just press `Ctrl` + `C` on your keyboard). Now, re-run `jekyll build` and `jekyll serve`, and return to `localhost:4000` in your browser. If you did everything correctly, your webpage should now look a bit fancier!
 
 ![jekyll_bootstrap](img/website_jekyll_bootstrap.png)
 
-8. Now that we have things set up, let's play around with the Bootstrap framework a bit! To start, let's create a new webpage by creating file `testbench.html` in the project root directory. (You should add this page to `navigation.html` as well, but we trust you know how to do that!) And don't forget, we don't need to add any CSS files to the head of this page! (Remember why?)
+4. Now that we have things set up, let's play around with the Bootstrap framework a bit! To start, let's create a new webpage by creating file `testbench.html` in the project root directory. (You should add this page to `navigation.html` as well, but we trust you know how to do that!) And don't forget, we don't need to add any CSS files to the head of this page! (Remember why?)
 
-9. Bootstrap is perhaps infamous for its incredibly easy-to-use grid layout system. Let's give it a try! In your `testbench.html` file, add the following in the `body`:
+5. Bootstrap is perhaps infamous for its incredibly easy-to-use grid layout system. Let's give it a try! In your `testbench.html` file, add the following in the `body`:
 
 ```html
 <div class="container">
@@ -163,7 +163,7 @@ To start using the Bootstrap grid system, you must add a `div` with class `conta
 
 You can read more about the basics of Bootstrap's grid system [here](https://getbootstrap.com/docs/4.1/layout/grid/).
 
-10. We also might want to pad our container a bit. To do so, we can go to our `style.css` file and add the following:
+6. We also might want to pad our container a bit. To do so, we can go to our `style.css` file and add the following:
 
 ```css
 .container {
@@ -182,11 +182,11 @@ If you do this, you may have to change the order of linked stylesheets in `defau
 </head>
 ```
 
-11. Let's explore another much-loved feature of Bootstrap: buttons. Bootstrap includes a wide range of button types with baked-in styles. You can check out the basic ones (and there are a lot!) [here](https://getbootstrap.com/docs/4.0/components/buttons/).
+7. Let's explore another much-loved feature of Bootstrap: buttons. Bootstrap includes a wide range of button types with baked-in styles. You can check out the basic ones (and there are a lot!) [here](https://getbootstrap.com/docs/4.0/components/buttons/).
 
 Add a button to your page using one of the pre-defined styles on Bootstrap's website. (You can even get a hyperlink that looks like a button!) If you want to center it on the page, just wrap it in Bootstrap's helpful `<div class="text-center">`.
 
-12. Remember the CSS checkbox hack we used in Lab 1 to create a hamburger menu, and how difficult that was to get working properly? Bootstrap makes adding a hamburger menu for mobile a breeze!
+8. Remember the CSS checkbox hack we used in Lab 1 to create a hamburger menu, and how difficult that was to get working properly? Bootstrap makes adding a hamburger menu for mobile a breeze!
 
 Head over to the navbar resource page on Bootstrap's website [here](https://getbootstrap.com/docs/4.1/components/navbar/). Select a style you like -- Bootstrap navbars are responsive by default. There's even an option to convert existing `a` elements to navbar items without needing a list!
 
@@ -223,8 +223,6 @@ And on mobile:
 * [ ] styled webpage with Bootstrap containers, buttons (+more!)
 
 ## Reflection
-
-*2 questions for the workshop participants to answer (very short answer) when they submit the workshop. These should try to get at something core to the workshop, the what and the why.*
 
 * [ ] How can `default.html` allow us to reduce code redundancy when building a website with Jekyll?
 * [ ] Why might a dev use Bootstrap to organize the layout of a site rather than creating base CSS elements (i.e. containers, rows) themselves?
