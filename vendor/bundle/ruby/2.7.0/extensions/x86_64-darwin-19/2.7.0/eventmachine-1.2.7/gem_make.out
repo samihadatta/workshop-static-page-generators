@@ -1,0 +1,16 @@
+current directory: /Users/samihadatta/Documents/Code/CS52/workshop-static-page-generators/vendor/bundle/ruby/2.7.0/gems/eventmachine-1.2.7/ext/fastfilereader
+/usr/local/opt/ruby/bin/ruby -I /usr/local/Cellar/ruby/2.7.1/lib/ruby/2.7.0 -r ./siteconf20200525-52698-1kpaqku.rb extconf.rb
+creating Makefile
+
+current directory: /Users/samihadatta/Documents/Code/CS52/workshop-static-page-generators/vendor/bundle/ruby/2.7.0/gems/eventmachine-1.2.7/ext/fastfilereader
+make "DESTDIR=" clean
+
+current directory: /Users/samihadatta/Documents/Code/CS52/workshop-static-page-generators/vendor/bundle/ruby/2.7.0/gems/eventmachine-1.2.7/ext/fastfilereader
+make "DESTDIR="
+compiling mapper.cpp
+compiling rubymain.cpp
+linking shared-object fastfilereaderext.bundle
+
+current directory: /Users/samihadatta/Documents/Code/CS52/workshop-static-page-generators/vendor/bundle/ruby/2.7.0/gems/eventmachine-1.2.7/ext/fastfilereader
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 fastfilereaderext.bundle ./.gem.20200525-52698-1ysicoq
