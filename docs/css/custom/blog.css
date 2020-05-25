@@ -1,0 +1,16 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+h1 {
+    width: 80%;
+    font-size: 4em;
+}
+
+p {
+    width: 80%;
+    font-size: 2em;
+}
